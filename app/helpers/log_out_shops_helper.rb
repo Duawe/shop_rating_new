@@ -1,0 +1,2 @@
+module LogOutShopsHelper
+end
