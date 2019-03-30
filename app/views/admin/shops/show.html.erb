@@ -1,16 +1,13 @@
-<h1><%= @product.title %></h1>
-<p><%= @product.description %></p>
+<h1><%= @shop.name %></h1>
 <p>
-    Price: <b><%= @product.price %></b>
+    Каегория: <%= @shop.category.name %>
 </p>
-<p>
-    <b>Category: </b> <%= @product.category.name %>
-</p>
+<p><%= @shop.description %></p>
 
-<% if @product.picture.attached? %>
-    <%= image_tag @product.picture, size: 100 %>
+<% if @shop.picture.attached? %>
+    <%= image_tag @shop.main, size: 100 %>
 <% end %>
 
 <div>
-    <%= link_to 'Back to list', admin_products_path %>
+    <%= link_to 'Назад', admin_shops_path %>
 </div>

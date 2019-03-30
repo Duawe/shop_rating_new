@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Products <%= link_to 'New Product', new_admin_product_path, class: 'btn btn-success' %></h1>
+    <h1>Задения <%= link_to 'Создать новое заведение', new_admin_shop_path, class: 'btn btn-success' %></h1>
   </div>
 </div>
 
@@ -8,31 +8,27 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Category</th>
-    <th>Actions</th>
+    <th>Фото</th>
+    <th>Название</th>
+    <th>Категория</th>
+    <th>Действия</th>
   </tr>
 
-  <% @products.each do |product| %>
+  <% @shops.each do |shop| %>
       <tr>
         <td>
-          <% if product.picture.attached? %>
-            <%= image_tag product.picture, size: 100 %>
+          <% if shop.main.attached? %>
+            <%= image_tag shop.main, size: 100 %>
           <% end %>
         </td>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.category.name %></td>
+        <td><%= shop.name %></td>
+        <td><%= shop.category.name %></td>
         <td>
-          <%= link_to 'View', admin_product_path(product) %>
-          <%= link_to 'Edit', edit_admin_product_path(product) %>
-          <%= link_to 'Delete', admin_product_path(product),
+          <%= link_to 'Просмотр', admin_shop_path(shop) %>
+          <%= link_to 'Изменить', edit_admin_shop_path(shop) %>
+          <%= link_to 'Удалить', admin_shop_path(shop),
                       method: :delete,
-                      data: {confirm: 'Do you want to remove this product?'} %>
+                      data: {confirm: 'Вы точно хотите удалить это заведение?'} %>
         </td>
       </tr>
   <% end %>
