@@ -1,38 +1,21 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Products <%= link_to 'New Product', new_admin_product_path, class: 'btn btn-success' %></h1>
+    <h1>Категории <%= link_to 'Создать новую категорию', 
+    new_admin_product_path, class: 'btn btn-success' %></h1>
   </div>
 </div>
 
-<hr>
-
 <table class="table table-striped">
   <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Category</th>
-    <th>Actions</th>
+    <th>Назвение</th>
+    <th>Действия</th>
   </tr>
 
-  <% @products.each do |product| %>
+  <% @categories.each do |category| %>
       <tr>
+        <td><%= category.name %></td>
         <td>
-          <% if product.picture.attached? %>
-            <%= image_tag product.picture, size: 100 %>
-          <% end %>
-        </td>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.category.name %></td>
-        <td>
-          <%= link_to 'View', admin_product_path(product) %>
-          <%= link_to 'Edit', edit_admin_product_path(product) %>
-          <%= link_to 'Delete', admin_product_path(product),
-                      method: :delete,
-                      data: {confirm: 'Do you want to remove this product?'} %>
+          <%= link_to 'Просмотреть', admin_category_path(category) %>
         </td>
       </tr>
   <% end %>

@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>Создать заведение</h1>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center align-items-center">
+  <%= form_with model: [ :shop, @shop], local: true do |f| %>
+
+  <% if @shop.errors.any? %>
+  <div class="errors">
+    Total errors: <%= @shop.errors.count %>
+    <ul>
+      <% @shop.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :Название %><br>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.text_field :name, placeholder: "Заведение" %>
+
+    </div>
+
+
+    <div class="form-group col-md-6">
+      <%= f.label :Категория %><br>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.collection_select :category_id, Category.all, :id, :name, {:class => 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :Описание %><br>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.text_area :description, placeholder: "Описание заведения" %>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :Главное_фото %><br>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.file_field :main, placeholder: "Фото" %>
+    </div>
+  </div>  
+
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <%= f.submit 'Создать', class: "btn btn-outline-success" %>
+  </div>
+  <% end %>
+</div>

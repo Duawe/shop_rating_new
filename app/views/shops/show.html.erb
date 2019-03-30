@@ -1,0 +1,13 @@
+<h1><%= @shop.name %></h1>
+<p>
+    Каегория: <%= @shop.category.name %>
+</p>
+<p><%= @shop.description %></p>
+
+<% if @shop.picture.attached? %>
+    <%= image_tag @shop.main, size: 100 %>
+<% end %>
+
+<div>
+    <%= link_to 'Назад', admin_shops_path %>
+</div>

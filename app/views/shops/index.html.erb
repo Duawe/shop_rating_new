@@ -1,5 +1,36 @@
-<h1> Все Заведения </h1>
+<div class="row">
+  <div class="col-md-12">
+    <h1>Задения <%= link_to 'Создать новое заведение', new_admin_shop_path, class: 'btn btn-success' %></h1>
+  </div>
+</div>
 
-<h2> Выберите категорию: example </h2>
+<hr>
 
-Вывод всех заведений с фото
+<table class="table table-striped">
+  <tr>
+    <th>Фото</th>
+    <th>Название</th>
+    <th>Категория</th>
+    <th>Действия</th>
+  </tr>
+
+  <% @shops.each do |shop| %>
+      <tr>
+        <td>
+          <% if shop.main.attached? %>
+            <%= image_tag shop.main, size: 100 %>
+          <% end %>
+        </td>
+        <td><%= shop.name %></td>
+        <td><%= shop.category.name %></td>
+        <td>
+          <%= link_to 'Просмотр', admin_shop_path(shop) %>
+          <%= link_to 'Изменить', edit_admin_shop_path(shop) %>
+          <%= link_to 'Удалить', admin_shop_path(shop),
+                      method: :delete,
+                      data: {confirm: 'Вы точно хотите удалить это заведение?'} %>
+        </td>
+      </tr>
+  <% end %>
+
+</table>
