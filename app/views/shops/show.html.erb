@@ -1,6 +1,6 @@
 <h1><%= @shop.name %></h1>
 <p>
-    Каегория: <%= @shop.category.name %>
+    Каегория: <%= link_to @shop.category.name, category_path(category) %>
 </p>
 <p><%= @shop.description %></p>
 
@@ -9,5 +9,5 @@
 <% end %>
 
 <div>
-    <%= link_to 'Назад', admin_shops_path %>
+    <%= link_to 'Назад', shops_path %>
 </div>

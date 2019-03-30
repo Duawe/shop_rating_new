@@ -18,7 +18,7 @@ class Admin::UsersController < AdminController
     @user = User.new(user_params)
     # upload_picture
     if @user.save
-      redirect_to user_path
+      redirect_to admin_shops_path
     else
       render 'new'
     end
@@ -31,7 +31,7 @@ class Admin::UsersController < AdminController
   def update
     if @user.update(user_params)
       # upload_picture
-      redirect_to user_path
+      redirect_to admin_shops_path
     else
       render 'edit'
     end
@@ -39,7 +39,7 @@ class Admin::UsersController < AdminController
 
   def destroy
     @user.destroy
-    redirect_to user_path 
+    redirect_to admin_shops_path 
   end
 
   private

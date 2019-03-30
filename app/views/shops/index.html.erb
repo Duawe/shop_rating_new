@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Задения <%= link_to 'Создать новое заведение', new_admin_shop_path, class: 'btn btn-success' %></h1>
+    <h1>Задения <%= link_to 'Создать новое заведение', 
+    new_shop_path, class: 'btn btn-success' %></h1>
   </div>
 </div>
 
@@ -21,14 +22,10 @@
             <%= image_tag shop.main, size: 100 %>
           <% end %>
         </td>
-        <td><%= shop.name %></td>
-        <td><%= shop.category.name %></td>
+        <td><%= link_to shop.name, shop_path(shop) %></td>
+        <td><%= link_to shop.category.name category_path(category) %></td>
         <td>
-          <%= link_to 'Просмотр', admin_shop_path(shop) %>
-          <%= link_to 'Изменить', edit_admin_shop_path(shop) %>
-          <%= link_to 'Удалить', admin_shop_path(shop),
-                      method: :delete,
-                      data: {confirm: 'Вы точно хотите удалить это заведение?'} %>
+          <%= link_to 'Просмотр', shop_path(shop) %>
         </td>
       </tr>
   <% end %>

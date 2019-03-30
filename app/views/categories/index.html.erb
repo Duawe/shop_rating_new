@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Категории <%= link_to 'Создать новую категорию', 
-    new_admin_product_path, class: 'btn btn-success' %></h1>
+    <h1>Категории %></h1>
   </div>
 </div>
 
@@ -13,9 +12,9 @@
 
   <% @categories.each do |category| %>
       <tr>
-        <td><%= category.name %></td>
+        <td><%= link_to category.name, category_path(category) %></td>
         <td>
-          <%= link_to 'Просмотреть', admin_category_path(category) %>
+          <%= link_to 'Просмотреть', category_path(category) %>
         </td>
       </tr>
   <% end %>

@@ -10,7 +10,7 @@ class Admin::ShopsController < AdminController
     @shop = Shop.new
   end
 
-  def create, :edit, :update, :destroy
+  def create
     #проверка на регистрацию
     
     @shop = Shop.new(shop_params)
@@ -18,7 +18,7 @@ class Admin::ShopsController < AdminController
     if @shop.save
       upload_picture
       main_file
-      redirect_to shops_path
+      redirect_to admin_shops_path
     else
       render 'new'
     end
@@ -34,7 +34,7 @@ class Admin::ShopsController < AdminController
 
   def update
     if @shop.update(shop_params)
-      redirect_to user_path
+      redirect_to admin_shops_path
     else
       render 'edit'
     end
@@ -42,7 +42,7 @@ class Admin::ShopsController < AdminController
 
   def destroy
     @shop.destroy
-    redirect_to user_path 
+    redirect_to admin_shops_path 
   end
 
   private

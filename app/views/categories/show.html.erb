@@ -4,9 +4,9 @@
 
 <h2> Заведения </h2>
 <% @categories.each do |category| %>
-  <%= category.shop.name %>
+  <%= link_to category.shop.name, shop_path(shop) %>
 <% end %>
 
 <div>
-  <%= link_to 'Назад', admin_categories_path %>
+  <%= link_to 'Назад', categories_path %>
 </div>
