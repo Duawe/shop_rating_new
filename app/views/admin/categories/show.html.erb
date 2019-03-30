@@ -1,16 +1,7 @@
-<h1><%= @product.title %></h1>
-<p><%= @product.description %></p>
-<p>
-    Price: <b><%= @product.price %></b>
-</p>
-<p>
-    <b>Category: </b> <%= @product.category.name %>
-</p>
-
-<% if @product.picture.attached? %>
-    <%= image_tag @product.picture, size: 100 %>
-<% end %>
+<h1>
+    Category: <%= @category.name %>
+</h1>
 
 <div>
-    <%= link_to 'Back to list', admin_products_path %>
+    <%= link_to 'Назад', admin_categories_path %>
 </div>
