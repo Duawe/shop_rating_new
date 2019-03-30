@@ -7,5 +7,6 @@ class Shop < ApplicationRecord
   has_many :categories
 
   has_many_attached :pictures
+  has_one_attached :main
 
 end

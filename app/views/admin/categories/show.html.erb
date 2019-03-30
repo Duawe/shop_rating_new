@@ -1,7 +1,12 @@
 <h1>
-    Category: <%= @category.name %>
+  Category: <%= @category.name %>
 </h1>
 
+<h2> Заведения </h2>
+<% @categories.each do |category| %>
+  <%= category.shop.name %>
+<% end %>
+
 <div>
-    <%= link_to 'Назад', admin_categories_path %>
+  <%= link_to 'Назад', admin_categories_path %>
 </div>
