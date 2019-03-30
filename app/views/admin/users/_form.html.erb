@@ -1,48 +1,46 @@
-<%= form_with model: [:admin, @product], local: true do |f| %>
+<div class="d-flex justify-content-center align-items-center">
+  <%= form_with model: [ :user, @user], local: true do |f| %>
 
-    <div class="form-group <%= 'has-error' if @product.errors[:title].any? %>">
-      <%= f.label :title, class: 'col-md-2 col-form-label' %>
-      <div class="col-md-10">
-        <%= f.text_field :title, class: 'form-control' %>
-        <%= render 'shared/field_errors', object: @product, field_name: :title %>
-      </div>
+  <% if @user.errors.any? %>
+  <div class="errors">
+    Total errors: <%= @user.errors.count %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :Логин %><br>
+    </div>
+    <div class="form-group col-md-6">
+      <%= f.text_field :nickname, placeholder: "Логин" %>
     </div>
 
-    <div class="form-group <%= 'has-error' if @product.errors[:description].any? %>">
-      <%= f.label :description, class: 'col-md-2 col-form-label' %>
-      <div class="col-md-10">
-        <%= f.text_area :description, class: 'form-control' %>
-        <%= render 'shared/field_errors', object: @product, field_name: :description %>
-      </div>
-    </div>
 
-    <div class="form-group <%= 'has-error' if @product.errors[:price].any? %>">
-      <%= f.label :price, class: 'col-md-2 col-form-label' %>
-      <div class="col-md-10">
-        <%= f.text_field :price, class: 'form-control' %>
-        <%= render 'shared/field_errors', object: @product, field_name: :price %>
-      </div>
+    <div class="form-group col-md-6">
+      <%= f.label :Пароль %><br>
     </div>
+    <div class="form-group col-md-6">
+      <%= f.password_field :password, placeholder: "Парольы" %>
+    </div>
+  </div>
 
-    <div class="form-group <%= 'has-error' if @product.errors[:category_id].any? %>">
-      <%= f.label :category_id, 'Category', class: 'col-md-2 col-form-label' %>
-      <div class="col-md-10">
-        <%= f.collection_select :category_id, Category.all, :id, :name, {}, class: 'form-control' %>
-        <%= render 'shared/field_errors', object: @product, field_name: :category_id %>
-      </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <%= f.label :Email %><br>
     </div>
+    <div class="form-group col-md-6">
+      <%= f.text_area :email, placeholder: "Email" %>
+    </div>
+  </div>
+ 
 
-    <div class="form-group <%= 'has-error' if @product.errors[:picture].any? %>">
-      <%= f.label :picture, class: 'col-md-2 col-form-label' %>
-      <div class="col-md-10">
-        <%= f.file_field :picture %>
-        <%= render 'shared/field_errors', object: @product, field_name: :picture %>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <div class="col-md-10">
-        <%= f.submit class: 'btn btn-primary' %>
-      </div>
-    </div>
-<% end %>
+  <div class="d-flex justify-content-center align-items-center mb-4">
+    <%= f.submit 'Создать', class: "btn btn-outline-success" %>
+  </div>
+  <% end %>
+</div>

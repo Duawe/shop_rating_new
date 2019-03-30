@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <h1>Products <%= link_to 'New Product', new_admin_product_path, class: 'btn btn-success' %></h1>
+    <h1>Пользователи <%= link_to 'Создать польхователя', new_admin_user_path, class: 'btn btn-success' %></h1>
   </div>
 </div>
 
@@ -8,31 +8,21 @@
 
 <table class="table table-striped">
   <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Category</th>
-    <th>Actions</th>
+    <th>Логин</th>
+    <th>Email</th>
+    <th>Действия</th>
   </tr>
 
-  <% @products.each do |product| %>
+  <% @users.each do |user| %>
       <tr>
+        <td><%= user.nickname %></td>
+        <td><%= user.email %></td>
         <td>
-          <% if product.picture.attached? %>
-            <%= image_tag product.picture, size: 100 %>
-          <% end %>
-        </td>
-        <td><%= product.title %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.category.name %></td>
-        <td>
-          <%= link_to 'View', admin_product_path(product) %>
-          <%= link_to 'Edit', edit_admin_product_path(product) %>
-          <%= link_to 'Delete', admin_product_path(product),
+          <%= link_to 'Просмотреть', admin_user_path(user) %>
+          <%= link_to 'Редактировать', edit_admin_user_path(user) %>
+          <%= link_to 'Удалить', admin_user_path(user),
                       method: :delete,
-                      data: {confirm: 'Do you want to remove this product?'} %>
+                      data: {confirm: 'Вы точно хотите удалить пользвателя?'} %>
         </td>
       </tr>
   <% end %>
