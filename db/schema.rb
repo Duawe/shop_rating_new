@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_30_080516) do
+ActiveRecord::Schema.define(version: 2019_03_30_085759) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_03_30_080516) do
   end
 
   create_table "categories", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "shop_id"
@@ -41,6 +42,8 @@ ActiveRecord::Schema.define(version: 2019_03_30_080516) do
   end
 
   create_table "shops", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
@@ -50,9 +53,13 @@ ActiveRecord::Schema.define(version: 2019_03_30_080516) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "nickname"
+    t.string "email"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "shop_id"
+    t.boolean "admin"
     t.index ["shop_id"], name: "index_users_on_shop_id"
   end
 

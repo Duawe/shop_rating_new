@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  belong_to :shop
+  belongs_to :shop
 
   has_one :shop
 
