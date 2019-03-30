@@ -1,6 +1,6 @@
-class ShopsController < ApplicationController
+class Admin::ShopsController < AdminController
 
-  before_action :find_shop, only: [:show]
+  before_action :find_shop, only: [:show, :edit, :update, :destroy]
 
   def index
     @shops = Shop.all
@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
     @shop = Shop.new
   end
 
-  def create
+  def create, :edit, :update, :destroy
     #проверка на регистрацию
     
     @shop = Shop.new(shop_params)
@@ -25,9 +25,26 @@ class ShopsController < ApplicationController
   end
 
   def show
-    
+
   end
   
+  def edit
+
+  end
+
+  def update
+    if @shop.update(shop_params)
+      redirect_to user_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @shop.destroy
+    redirect_to user_path 
+  end
+
   private
 
   def find_shop
