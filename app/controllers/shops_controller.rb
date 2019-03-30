@@ -12,7 +12,7 @@ class ShopsController < ApplicationController
 
   def create
     #проверка на регистрацию
-
+    
     @shop = Shop.new(shop_params)
     
     if @shop.save
